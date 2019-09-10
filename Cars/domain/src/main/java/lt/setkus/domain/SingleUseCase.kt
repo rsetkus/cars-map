@@ -1,7 +1,6 @@
 package lt.setkus.domain
 
 import io.reactivex.Single
-import io.reactivex.SingleObserver
 import io.reactivex.schedulers.Schedulers
 import lt.setkus.domain.rentalcars.PostExecutionThread
 
@@ -10,12 +9,14 @@ abstract class SingleUseCase<T>(
     private val postExecutionThread: PostExecutionThread
 ) {
 
-    fun subscribe(observer: SingleObserver<T>) {
+    fun subscribe(onSuccess: (T) -> Unit, onError: (Throwable) -> Unit) =
         buildSingle()
             .subscribeOn(Schedulers.from(threadExecutor))
             .observeOn(postExecutionThread.getScheduler())
-            .subscribe(observer)
-    }
+            .subscribe(
+                onSuccess,
+                onError
+            )
 
     abstract fun buildSingle(): Single<T>
 }
