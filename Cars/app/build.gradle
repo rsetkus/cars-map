@@ -31,6 +31,7 @@ dependencies {
     implementation appDependencies.rxjava2
 
     testImplementation appTestDependencies.junit
+    testImplementation appTestDependencies.mockk
     androidTestImplementation appTestDependencies.testRunner
     androidTestImplementation appTestDependencies.espressoCore
 }

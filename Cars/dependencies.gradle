@@ -13,6 +13,7 @@ ext {
     junitVersion = '4.12'
     testRunnerVersion = '1.2.0'
     espressoCoreVersion = '3.2.0'
+    mockkVersion = '1.9.3'
 
     appDependencies = [
             kotlinStdLibrary        : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
@@ -26,7 +27,8 @@ ext {
     appTestDependencies = [
             junit                   : "junit:junit:$junitVersion",
             testRunner              : "androidx.test:runner:$testRunnerVersion",
-            espressoCore            : "androidx.test.espresso:espresso-core:$espressoCoreVersion"
+            espressoCore            : "androidx.test.espresso:espresso-core:$espressoCoreVersion",
+            mockk                   : "io.mockk:mockk:${mockkVersion}",
     ]
 
     dataDependencies = [
@@ -38,6 +40,7 @@ ext {
 
     dataTestDependencies = [
             junit                   : "junit:junit:$junitVersion",
+            mockk                   : "io.mockk:mockk:${mockkVersion}",
     ]
 
     domainDependencies = [
@@ -47,5 +50,6 @@ ext {
 
     domainTestDependencies = [
             junit                   : "junit:junit:$junitVersion",
+            mockk                   : "io.mockk:mockk:${mockkVersion}",
     ]
 }

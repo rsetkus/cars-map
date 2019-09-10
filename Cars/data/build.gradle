@@ -36,4 +36,5 @@ dependencies {
 
 
     testImplementation dataTestDependencies.junit
+    testImplementation dataTestDependencies.mockk
 }

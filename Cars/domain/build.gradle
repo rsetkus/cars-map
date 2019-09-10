@@ -8,4 +8,5 @@ dependencies {
     implementation domainDependencies.rxjava2
 
     testImplementation domainTestDependencies.junit
+    testImplementation domainTestDependencies.mockk
 }
