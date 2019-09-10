@@ -1,0 +1,43 @@
+ext {
+    gradlePluginVersion = '3.5.0'
+    kotlinVersion = '1.3.50'
+
+    // Application dependencies
+    appCompatVersion = '1.1.0'
+    coreKotlinExtensionsVersion = '1.1.0'
+
+    // Test dependencies
+    junitVersion = '4.12'
+    testRunnerVersion = '1.2.0'
+    espressoCoreVersion = '3.2.0'
+
+    appDependencies = [
+            kotlinStdLibrary        : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
+            appCompat               : "androidx.appcompat:appcompat:$appCompatVersion",
+            coreKotlinExtensions    : "androidx.core:core-ktx:$coreKotlinExtensionsVersion"
+    ]
+
+    appTestDependencies = [
+            junit                   : "junit:junit:$junitVersion",
+            testRunner              : "androidx.test:runner:$testRunnerVersion",
+            espressoCore            : "androidx.test.espresso:espresso-core:$espressoCoreVersion"
+    ]
+
+    dataDependencies = [
+            kotlinStdLibrary        : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
+            appCompat               : "androidx.appcompat:appcompat:$appCompatVersion",
+            coreKotlinExtensions    : "androidx.core:core-ktx:$coreKotlinExtensionsVersion"
+    ]
+
+    dataTestDependencies = [
+            junit                   : "junit:junit:$junitVersion",
+    ]
+
+    domainDependencies = [
+            kotlinStdLibrary        : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    ]
+
+    domainTestDependencies = [
+            junit                   : "junit:junit:$junitVersion",
+    ]
+}

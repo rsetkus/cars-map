@@ -1,8 +1,12 @@
-apply plugin: 'java-library'
+apply plugin: 'kotlin'
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-}
+    def domainDependencies = rootProject.ext.domainDependencies
+    def domainTestDependencies = rootProject.ext.domainTestDependencies
 
-sourceCompatibility = "7"
-targetCompatibility = "7"
+    implementation domainDependencies.kotlinStdLibrary
+
+    testImplementation domainTestDependencies.junit
+
+    testImplementation dataTestDependencies.junit
+}
