@@ -5,8 +5,7 @@ dependencies {
     def domainTestDependencies = rootProject.ext.domainTestDependencies
 
     implementation domainDependencies.kotlinStdLibrary
+    implementation domainDependencies.rxjava2
 
     testImplementation domainTestDependencies.junit
-
-    testImplementation dataTestDependencies.junit
 }
