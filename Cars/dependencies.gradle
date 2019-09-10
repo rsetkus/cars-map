@@ -1,6 +1,7 @@
 ext {
     gradlePluginVersion = '3.5.0'
     kotlinVersion = '1.3.50'
+    ktlintVersion = '0.34.2'
 
     // Application dependencies
     appCompatVersion = '1.1.0'

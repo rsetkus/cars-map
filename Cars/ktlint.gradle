@@ -1,0 +1,33 @@
+repositories {
+    jcenter()
+}
+
+configurations {
+    ktlint
+}
+
+dependencies {
+    ktlint "com.pinterest:ktlint:${rootProject.ext.ktlintVersion}"
+}
+
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    classpath = configurations.ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "src/**/*.kt", "-v", "--disabled_rules=import-ordering,final-newline"
+}
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations."
+    classpath = configurations.ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "-F", "src/**/*.kt"
+}
+
+getTasksByName("compileKotlin", false).each {
+    it.dependsOn("ktlint")
+}
+
+getTasksByName("preBuild", false).each {
+    it.dependsOn("ktlint")
+}
