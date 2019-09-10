@@ -3,6 +3,7 @@ package lt.setkus.domain.rentalcars
 data class Car(
     val id: String,
     val modelIdentifier: String,
+    val modelName: String,
     val ownerName: String,
     val manufacturer: String,
     val group: String,

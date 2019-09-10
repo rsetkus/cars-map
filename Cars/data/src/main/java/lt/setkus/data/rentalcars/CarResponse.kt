@@ -1,10 +1,13 @@
 package lt.setkus.data.rentalcars
 
+import lt.setkus.domain.rentalcars.Car
+
 data class CarResponse(
     val id: String,
     val modelIdentifier: String,
-    val ownerName: String,
-    val manufacturer: String,
+    val modelName: String,
+    val name: String,
+    val make: String,
     val group: String,
     val color: String,
     val series: String,
@@ -17,3 +20,26 @@ data class CarResponse(
     val innerCleanliness: String,
     val carImageUrl: String
 )
+
+val responseToDomainMapper: (response: List<CarResponse>) -> List<Car> = { r ->
+    r.map {
+        Car(
+            it.id,
+            it.modelIdentifier,
+            it.modelName,
+            it.name,
+            it.make,
+            it.group,
+            it.color,
+            it.series,
+            it.fuelType,
+            it.fuelLevel,
+            it.transmission,
+            it.licensePlate,
+            it.latitude,
+            it.longitude,
+            it.innerCleanliness,
+            it.carImageUrl
+        )
+    }
+}

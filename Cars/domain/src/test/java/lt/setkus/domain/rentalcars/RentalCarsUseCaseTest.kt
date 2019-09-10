@@ -14,7 +14,8 @@ class RentalCarsUseCaseTest {
     val cars = listOf(
         Car(
             "id",
-            "LTU1",
+            "BMW7",
+            "7 Series",
             "Jonas",
             "BMW",
             "SEDAN",
