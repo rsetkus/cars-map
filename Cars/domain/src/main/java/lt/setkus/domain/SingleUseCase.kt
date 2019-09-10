@@ -4,10 +4,9 @@ import io.reactivex.Single
 import io.reactivex.SingleObserver
 import io.reactivex.schedulers.Schedulers
 import lt.setkus.domain.rentalcars.PostExecutionThread
-import java.util.concurrent.ThreadPoolExecutor
 
 abstract class SingleUseCase<T>(
-    private val threadExecutor: ThreadPoolExecutor,
+    private val threadExecutor: ThreadExecutor,
     private val postExecutionThread: PostExecutionThread
 ) {
 
