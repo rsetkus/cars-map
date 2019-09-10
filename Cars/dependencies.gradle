@@ -8,6 +8,8 @@ ext {
     coreKotlinExtensionsVersion = '1.1.0'
     rxjava2Version = '2.2.11'
     rxAndroidVersion = '2.1.1'
+    retrofitVersion = '2.6.1'
+    gsonVersion = '2.8.5'
 
     // Test dependencies
     junitVersion = '4.12'
@@ -21,7 +23,6 @@ ext {
             coreKotlinExtensions    : "androidx.core:core-ktx:$coreKotlinExtensionsVersion",
             rxjava2                 : "io.reactivex.rxjava2:rxjava:${rxjava2Version}",
             rxAndroid               : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
-
     ]
 
     appTestDependencies = [
@@ -36,6 +37,10 @@ ext {
             appCompat               : "androidx.appcompat:appcompat:$appCompatVersion",
             coreKotlinExtensions    : "androidx.core:core-ktx:$coreKotlinExtensionsVersion",
             rxjava2                 : "io.reactivex.rxjava2:rxjava:${rxjava2Version}",
+            retrofit                : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitGsonConverter   : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            retrofitRxJavaAdapter   : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
+            gson                    : "com.google.code.gson:gson:${gsonVersion}"
     ]
 
     dataTestDependencies = [

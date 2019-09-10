@@ -26,14 +26,19 @@ android {
 }
 
 dependencies {
-    def dataDependencies = rootProject.ext.appDependencies
+    def dataDependencies = rootProject.ext.dataDependencies
     def dataTestDependencies = rootProject.ext.dataTestDependencies
+
+    implementation project(":domain")
 
     implementation dataDependencies.kotlinStdLibrary
     implementation dataDependencies.appCompat
     implementation dataDependencies.coreKotlinExtensions
     implementation dataDependencies.rxjava2
-
+    implementation dataDependencies.retrofit
+    implementation dataDependencies.retrofitGsonConverter
+    implementation dataDependencies.retrofitRxJavaAdapter
+    implementation dataDependencies.gson
 
     testImplementation dataTestDependencies.junit
     testImplementation dataTestDependencies.mockk
