@@ -29,8 +29,8 @@ ext {
             lifecycleRuntime        : "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion",
             lifecycleCommons        : "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion",
             koin                    : "org.koin:koin-android:$koinVersion",
-            koinScope               : "org.koin:koin-android-scope:$koinVersion",
-            koinViewModel           : "org.koin:koin-android-viewmodel:$koinVersion",
+            koinScope               : "org.koin:koin-androidx-scope:$koinVersion",
+            koinViewModel           : "org.koin:koin-androidx-viewmodel:$koinVersion",
     ]
 
     appTestDependencies = [
