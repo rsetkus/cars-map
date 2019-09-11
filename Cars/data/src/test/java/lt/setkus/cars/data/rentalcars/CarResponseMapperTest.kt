@@ -1,6 +1,6 @@
-package lt.setkus.data.rentalcars
+package lt.setkus.cars.data.rentalcars
 
-import lt.setkus.domain.rentalcars.Car
+import lt.setkus.cars.domain.rentalcars.Car
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

@@ -10,8 +10,8 @@ import lt.setkus.cars.app.common.Finished
 import lt.setkus.cars.app.common.Loading
 import lt.setkus.cars.app.common.Error
 import lt.setkus.cars.app.testObserver
-import lt.setkus.domain.rentalcars.Car
-import lt.setkus.domain.rentalcars.RentalCarsUseCase
+import lt.setkus.cars.domain.rentalcars.Car
+import lt.setkus.cars.domain.rentalcars.RentalCarsUseCase
 import org.hamcrest.CoreMatchers.hasItem
 import org.hamcrest.CoreMatchers.isA
 import org.junit.Assert.assertThat

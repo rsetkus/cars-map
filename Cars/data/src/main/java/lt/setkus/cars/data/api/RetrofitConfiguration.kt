@@ -1,4 +1,4 @@
-package lt.setkus.data.api
+package lt.setkus.cars.data.api
 
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

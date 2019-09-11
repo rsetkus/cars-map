@@ -1,4 +1,4 @@
-package lt.setkus.domain.rentalcars
+package lt.setkus.cars.domain.rentalcars
 
 import io.reactivex.Single
 

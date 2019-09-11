@@ -1,10 +1,10 @@
-package lt.setkus.domain.rentalcars
+package lt.setkus.cars.domain.rentalcars
 
 import io.mockk.every
 import io.mockk.mockk
 import io.reactivex.Single
-import lt.setkus.domain.PostExecutionThread
-import lt.setkus.domain.ThreadExecutor
+import lt.setkus.cars.domain.PostExecutionThread
+import lt.setkus.cars.domain.ThreadExecutor
 import org.junit.Test
 
 class RentalCarsUseCaseTest {

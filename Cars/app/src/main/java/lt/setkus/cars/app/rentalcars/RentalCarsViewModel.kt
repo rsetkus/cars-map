@@ -8,8 +8,8 @@ import lt.setkus.cars.app.common.Error
 import lt.setkus.cars.app.common.Finished
 import lt.setkus.cars.app.common.Loading
 import lt.setkus.cars.app.common.ViewState
-import lt.setkus.domain.rentalcars.Car
-import lt.setkus.domain.rentalcars.RentalCarsUseCase
+import lt.setkus.cars.domain.rentalcars.Car
+import lt.setkus.cars.domain.rentalcars.RentalCarsUseCase
 
 class RentalCarsViewModel(private val useCase: RentalCarsUseCase) : ViewModel() {
 

@@ -1,4 +1,4 @@
-package lt.setkus.domain
+package lt.setkus.cars.domain
 
 import java.util.concurrent.Executor
 

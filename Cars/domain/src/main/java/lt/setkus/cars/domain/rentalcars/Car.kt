@@ -1,4 +1,4 @@
-package lt.setkus.domain.rentalcars
+package lt.setkus.cars.domain.rentalcars
 
 data class Car(
     val id: String,

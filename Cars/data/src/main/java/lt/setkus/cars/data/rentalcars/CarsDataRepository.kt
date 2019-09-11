@@ -1,9 +1,9 @@
-package lt.setkus.data.rentalcars
+package lt.setkus.cars.data.rentalcars
 
 import io.reactivex.Single
-import lt.setkus.data.api.RentalCarsService
-import lt.setkus.domain.rentalcars.Car
-import lt.setkus.domain.rentalcars.CarsRepository
+import lt.setkus.cars.data.api.RentalCarsService
+import lt.setkus.cars.domain.rentalcars.Car
+import lt.setkus.cars.domain.rentalcars.CarsRepository
 
 class CarsDataRepository(
     private val service: RentalCarsService,

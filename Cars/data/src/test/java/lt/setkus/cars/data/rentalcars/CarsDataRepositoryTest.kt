@@ -1,11 +1,11 @@
-package lt.setkus.data.rentalcars
+package lt.setkus.cars.data.rentalcars
 
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import io.reactivex.Single
-import lt.setkus.data.api.RentalCarsService
-import lt.setkus.domain.rentalcars.Car
+import lt.setkus.cars.data.api.RentalCarsService
+import lt.setkus.cars.domain.rentalcars.Car
 import org.junit.Test
 
 class CarsDataRepositoryTest {

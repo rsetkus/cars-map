@@ -1,7 +1,7 @@
-package lt.setkus.data.api
+package lt.setkus.cars.data.api
 
 import io.reactivex.Single
-import lt.setkus.data.rentalcars.CarResponse
+import lt.setkus.cars.data.rentalcars.CarResponse
 import retrofit2.http.GET
 
 interface RentalCarsService {

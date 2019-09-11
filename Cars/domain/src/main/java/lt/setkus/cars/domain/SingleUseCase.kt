@@ -1,4 +1,4 @@
-package lt.setkus.domain
+package lt.setkus.cars.domain
 
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers

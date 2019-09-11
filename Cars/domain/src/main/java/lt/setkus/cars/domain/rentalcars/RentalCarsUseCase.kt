@@ -1,8 +1,8 @@
-package lt.setkus.domain.rentalcars
+package lt.setkus.cars.domain.rentalcars
 
-import lt.setkus.domain.PostExecutionThread
-import lt.setkus.domain.SingleUseCase
-import lt.setkus.domain.ThreadExecutor
+import lt.setkus.cars.domain.PostExecutionThread
+import lt.setkus.cars.domain.SingleUseCase
+import lt.setkus.cars.domain.ThreadExecutor
 
 class RentalCarsUseCase(
     private val repository: CarsRepository,
