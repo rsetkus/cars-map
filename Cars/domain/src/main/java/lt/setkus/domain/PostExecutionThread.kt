@@ -1,4 +1,4 @@
-package lt.setkus.domain.rentalcars
+package lt.setkus.domain
 
 import io.reactivex.Scheduler
 

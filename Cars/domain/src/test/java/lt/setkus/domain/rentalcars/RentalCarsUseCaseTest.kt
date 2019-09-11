@@ -3,12 +3,13 @@ package lt.setkus.domain.rentalcars
 import io.mockk.every
 import io.mockk.mockk
 import io.reactivex.Single
+import lt.setkus.domain.PostExecutionThread
 import lt.setkus.domain.ThreadExecutor
 import org.junit.Test
 
 class RentalCarsUseCaseTest {
-    val threadExecutor = mockk<ThreadExecutor>()
-    val postExecutionThread = mockk<PostExecutionThread>()
+    val threadExecutor = mockk<ThreadExecutor>(relaxed = true)
+    val postExecutionThread = mockk<PostExecutionThread>(relaxed = true)
     val repository = mockk<CarsRepository>()
 
     val cars = listOf(
