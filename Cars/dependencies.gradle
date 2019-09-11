@@ -11,6 +11,7 @@ ext {
     retrofitVersion = '2.6.1'
     gsonVersion = '2.8.5'
     lifecycleVersion = '2.0.0'
+    koinVersion = '2.0.1'
 
     // Test dependencies
     junitVersion = '4.12'
@@ -27,6 +28,9 @@ ext {
             lifecycleLiveData       : "androidx.lifecycle:lifecycle-livedata:$lifecycleVersion",
             lifecycleRuntime        : "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion",
             lifecycleCommons        : "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion",
+            koin                    : "org.koin:koin-android:$koinVersion",
+            koinScope               : "org.koin:koin-android-scope:$koinVersion",
+            koinViewModel           : "org.koin:koin-android-viewmodel:$koinVersion",
     ]
 
     appTestDependencies = [

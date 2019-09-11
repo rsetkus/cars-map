@@ -41,6 +41,9 @@ dependencies {
     implementation appDependencies.lifecycleLiveData
     implementation appDependencies.lifecycleRuntime
     implementation appDependencies.lifecycleCommons
+    implementation appDependencies.koin
+    implementation appDependencies.koinScope
+    implementation appDependencies.koinViewModel
 
     testImplementation appTestDependencies.junit
     testImplementation appTestDependencies.mockk
