@@ -4,11 +4,9 @@ import io.mockk.every
 import io.mockk.mockk
 import io.reactivex.Single
 import lt.setkus.cars.domain.PostExecutionThread
-import lt.setkus.cars.domain.ThreadExecutor
 import org.junit.Test
 
 class RentalCarsUseCaseTest {
-    val threadExecutor = mockk<ThreadExecutor>(relaxed = true)
     val postExecutionThread = mockk<PostExecutionThread>(relaxed = true)
     val repository = mockk<CarsRepository>()
 
@@ -33,7 +31,7 @@ class RentalCarsUseCaseTest {
         )
     )
     var error = Throwable("Error")
-    val rentalCarsUseCase = RentalCarsUseCase(repository, threadExecutor, postExecutionThread)
+    val rentalCarsUseCase = RentalCarsUseCase(repository, postExecutionThread)
 
     @Test
     fun `when rental cars use cases is built then should emit single of list of cars`() {
