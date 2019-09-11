@@ -25,6 +25,9 @@ dependencies {
     def appDependencies = rootProject.ext.appDependencies
     def appTestDependencies = rootProject.ext.appTestDependencies
 
+    implementation project(":data")
+    implementation project(":domain")
+
     implementation appDependencies.kotlinStdLibrary
     implementation appDependencies.appCompat
     implementation appDependencies.coreKotlinExtensions
