@@ -29,9 +29,14 @@ dependencies {
     implementation appDependencies.appCompat
     implementation appDependencies.coreKotlinExtensions
     implementation appDependencies.rxjava2
+    implementation appDependencies.lifecycleLiveData
+    implementation appDependencies.lifecycleRuntime
+    implementation appDependencies.lifecycleCommons
 
     testImplementation appTestDependencies.junit
     testImplementation appTestDependencies.mockk
+    testImplementation appTestDependencies.androidLifeCycleTestCore
+
     androidTestImplementation appTestDependencies.testRunner
     androidTestImplementation appTestDependencies.espressoCore
 }
