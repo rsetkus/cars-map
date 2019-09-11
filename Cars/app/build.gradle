@@ -38,6 +38,7 @@ dependencies {
     implementation appDependencies.appCompat
     implementation appDependencies.coreKotlinExtensions
     implementation appDependencies.rxjava2
+    implementation appDependencies.rxAndroid
     implementation appDependencies.lifecycleLiveData
     implementation appDependencies.lifecycleRuntime
     implementation appDependencies.lifecycleCommons
