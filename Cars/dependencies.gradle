@@ -20,7 +20,7 @@ ext {
     testRunnerVersion = '1.2.0'
     espressoCoreVersion = '3.2.0'
     mockkVersion = '1.9.3'
-    fogerVersion = '0.12'
+    forgerVersion = '0.12'
 
     appDependencies = [
             kotlinStdLibrary        : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
@@ -43,7 +43,8 @@ ext {
             testRunner                  : "androidx.test:runner:$testRunnerVersion",
             espressoCore                : "androidx.test.espresso:espresso-core:$espressoCoreVersion",
             mockk                       : "io.mockk:mockk:$mockkVersion",
-            androidLifeCycleTestCore    : "androidx.arch.core:core-testing:$lifecycleVersion"
+            androidLifeCycleTestCore    : "androidx.arch.core:core-testing:$lifecycleVersion",
+            forger                      : "com.github.xgouchet:Elmyr:$forgerVersion"
     ]
 
     dataDependencies = [
@@ -60,7 +61,7 @@ ext {
     dataTestDependencies = [
             junit                   : "junit:junit:$junitVersion",
             mockk                   : "io.mockk:mockk:$mockkVersion",
-            foger                   : "com.github.xgouchet:Elmyr:$fogerVersion"
+            forger                  : "com.github.xgouchet:Elmyr:$forgerVersion"
     ]
 
     domainDependencies = [
@@ -71,6 +72,6 @@ ext {
     domainTestDependencies = [
             junit                   : "junit:junit:$junitVersion",
             mockk                   : "io.mockk:mockk:$mockkVersion",
-            foger                   : "com.github.xgouchet:Elmyr:$fogerVersion"
+            forger                  : "com.github.xgouchet:Elmyr:$forgerVersion"
     ]
 }

@@ -55,6 +55,7 @@ dependencies {
     testImplementation appTestDependencies.junit
     testImplementation appTestDependencies.mockk
     testImplementation appTestDependencies.androidLifeCycleTestCore
+    testImplementation appTestDependencies.forger
 
     androidTestImplementation appTestDependencies.testRunner
     androidTestImplementation appTestDependencies.espressoCore

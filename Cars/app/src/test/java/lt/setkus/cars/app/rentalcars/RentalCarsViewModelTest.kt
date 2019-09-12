@@ -15,6 +15,7 @@ import lt.setkus.cars.domain.rentalcars.RentalCarsUseCase
 import org.hamcrest.CoreMatchers.hasItem
 import org.hamcrest.CoreMatchers.isA
 import org.junit.Assert.assertThat
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
@@ -24,8 +25,14 @@ class RentalCarsViewModelTest {
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     val useCase = mockk<RentalCarsUseCase>()
+    val mapper = mockk<(List<Car>) -> List<CarViewData>>()
 
-    val viewModel = RentalCarsViewModel(useCase)
+    val viewModel = RentalCarsViewModel(useCase, mapper)
+
+    @Before
+    fun setUp() {
+        every { mapper(any()) } returns listOf(mockk<CarViewData>())
+    }
 
     @Test
     fun `when requested data from view model then should emit view state`() {
@@ -55,12 +62,14 @@ class RentalCarsViewModelTest {
 
     @Test
     fun `when view model lifecycle ends then should dispose Disposable`() {
-        val disposable = mockk<Disposable>(relaxed = true)
-        val single = mockk<Single<List<Car>>>()
+        val disposable = mockk<Disposable>()
+        val singleDomain = mockk<Single<List<Car>>>(relaxed = true)
+        val singleView = mockk<Single<List<CarViewData>>>(relaxed = true)
 
-        every { useCase.build() } returns single
+        every { useCase.build() } returns singleDomain
+        every { singleDomain.map(mapper) } returns singleView
+        every { singleView.subscribe(any(), any()) } returns disposable
         every { disposable.isDisposed } returns false
-        every { single.subscribe(any(), any()) } returns disposable
 
         viewModel.pullRentalCars()
         viewModel.onCleared()

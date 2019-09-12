@@ -48,5 +48,5 @@ dependencies {
 
     testImplementation dataTestDependencies.junit
     testImplementation dataTestDependencies.mockk
-    testImplementation dataTestDependencies.foger
+    testImplementation dataTestDependencies.forger
 }
