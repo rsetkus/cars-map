@@ -1,35 +1,24 @@
 package lt.setkus.cars.domain.rentalcars
 
+import fr.xgouchet.elmyr.junit.JUnitForger
 import io.mockk.every
 import io.mockk.mockk
 import io.reactivex.Single
 import lt.setkus.cars.domain.PostExecutionThread
+import lt.setkus.cars.domain.asCar
+import org.junit.Rule
 import org.junit.Test
 
 class RentalCarsUseCaseTest {
+
+    @get:Rule
+    val forger = JUnitForger()
+
     val postExecutionThread = mockk<PostExecutionThread>(relaxed = true)
     val repository = mockk<CarsRepository>()
 
-    val cars = listOf(
-        Car(
-            "id",
-            "BMW7",
-            "7 Series",
-            "Jonas",
-            "BMW",
-            "SEDAN",
-            "black",
-            "SEDAN",
-            "D",
-            0.7,
-            "A",
-            "GMU 076",
-            48.1236479,
-            11.576921,
-            "Clean",
-            "https://image.url"
-        )
-    )
+    val cars = listOf(forger.asCar(), forger.asCar(), forger.asCar())
+
     var error = Throwable("Error")
     val rentalCarsUseCase = RentalCarsUseCase(repository, postExecutionThread)
 

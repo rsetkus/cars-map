@@ -9,4 +9,5 @@ dependencies {
 
     testImplementation domainTestDependencies.junit
     testImplementation domainTestDependencies.mockk
+    testImplementation domainTestDependencies.foger
 }
