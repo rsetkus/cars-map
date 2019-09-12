@@ -3,11 +3,8 @@ package lt.setkus.cars.app.rentalcars
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import arrow.core.Either
 import io.reactivex.disposables.CompositeDisposable
-import lt.setkus.cars.app.common.Error
-import lt.setkus.cars.app.common.Finished
-import lt.setkus.cars.app.common.Loading
-import lt.setkus.cars.app.common.ViewState
 import lt.setkus.cars.domain.rentalcars.Car
 import lt.setkus.cars.domain.rentalcars.RentalCarsUseCase
 
@@ -17,15 +14,14 @@ class RentalCarsViewModel(
 ) : ViewModel() {
 
     private val disposables = CompositeDisposable()
-    val viewState = MutableLiveData<ViewState>()
+    val viewState = MutableLiveData<Either<Throwable, List<CarViewData>>>()
 
     fun pullRentalCars() {
-        viewState.postValue(Loading)
         val disposable = useCase.build()
             .map(viewDataMapper)
             .subscribe(
-                { list: List<CarViewData> -> viewState.postValue(Finished(list)) },
-                { viewState.postValue(Error(it)) }
+                { list: List<CarViewData> -> viewState.postValue(Either.right(list)) },
+                { viewState.postValue(Either.left(it)) }
             )
         disposables.add(disposable)
     }

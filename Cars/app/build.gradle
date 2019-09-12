@@ -59,6 +59,9 @@ dependencies {
     implementation appDependencies.cardView
     implementation appDependencies.constraintLayout
 
+    implementation appDependencies.arrowCore
+    implementation appDependencies.arrowSyntax
+
     testImplementation appTestDependencies.junit
     testImplementation appTestDependencies.mockk
     testImplementation appTestDependencies.androidLifeCycleTestCore

@@ -6,15 +6,10 @@ import io.mockk.mockk
 import io.mockk.verify
 import io.reactivex.Single
 import io.reactivex.disposables.Disposable
-import lt.setkus.cars.app.common.Finished
-import lt.setkus.cars.app.common.Loading
-import lt.setkus.cars.app.common.Error
 import lt.setkus.cars.app.testObserver
 import lt.setkus.cars.domain.rentalcars.Car
 import lt.setkus.cars.domain.rentalcars.RentalCarsUseCase
-import org.hamcrest.CoreMatchers.hasItem
-import org.hamcrest.CoreMatchers.isA
-import org.junit.Assert.assertThat
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -41,8 +36,7 @@ class RentalCarsViewModelTest {
         val emittedItems = viewModel.viewState.testObserver()
         viewModel.pullRentalCars()
 
-        assertThat(emittedItems.observedValues, hasItem(isA(Loading::class.java)))
-        assertThat(emittedItems.observedValues, hasItem(isA(Finished::class.java)))
+        assertTrue(emittedItems.observedValues.first().isRight())
 
         verify { useCase.build() }
     }
@@ -54,8 +48,7 @@ class RentalCarsViewModelTest {
         val emittedItems = viewModel.viewState.testObserver()
         viewModel.pullRentalCars()
 
-        assertThat(emittedItems.observedValues, hasItem(isA(Loading::class.java)))
-        assertThat(emittedItems.observedValues, hasItem(isA(Error::class.java)))
+        assertTrue(emittedItems.observedValues.first().isLeft())
 
         verify { useCase.build() }
     }

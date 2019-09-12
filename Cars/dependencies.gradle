@@ -17,6 +17,7 @@ ext {
     recyclerViewVersion = "1.0.0"
     cardViewVersion = "1.0.0"
     constraintLayoutVersion = "2.0.0-alpha3"
+    arrowVersion = "0.8.0"
 
     // Test dependencies
     junitVersion = '4.12'
@@ -41,7 +42,10 @@ ext {
             koinScope               : "org.koin:koin-androidx-scope:$koinVersion",
             koinViewModel           : "org.koin:koin-androidx-viewmodel:$koinVersion",
             maps                    : "com.google.android.gms:play-services-maps:$googlePlayServicesMapsVersion",
-            materialComponents      : "com.google.android.material:material:$materialComponentsVersion"
+            materialComponents      : "com.google.android.material:material:$materialComponentsVersion",
+            arrowCore               : "io.arrow-kt:arrow-core:$arrowVersion",
+            arrowSyntax             : "io.arrow-kt:arrow-syntax:$arrowVersion",
+            arrowKapt               : "io.arrow-kt:arrow-meta:$arrowVersion"
     ]
 
     appTestDependencies = [

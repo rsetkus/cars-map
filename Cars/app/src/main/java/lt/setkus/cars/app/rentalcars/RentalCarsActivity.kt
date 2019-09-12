@@ -5,12 +5,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import arrow.core.Either
 import kotlinx.android.synthetic.main.bottom_sheet.carsList
 import lt.setkus.cars.R
-import lt.setkus.cars.app.common.Error
-import lt.setkus.cars.app.common.Finished
-import lt.setkus.cars.app.common.Loading
-import lt.setkus.cars.app.common.ViewState
 import org.koin.androidx.scope.currentScope
 
 class RentalCarsActivity : AppCompatActivity() {
@@ -27,12 +24,11 @@ class RentalCarsActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         carsList.layoutManager = layoutManager
 
-        val viewStateObserver = Observer<ViewState> { viewState ->
-            when (viewState) {
-                is Loading -> Toast.makeText(this, "Loading", Toast.LENGTH_SHORT).show()
-                is Finished<*> -> rentalCarsAdapter.submitRentalCars(viewState.data as List<CarViewData>)
-                is Error<*> -> Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-            }
+        val viewStateObserver = Observer<Either<Throwable, List<CarViewData>>> { viewState ->
+            viewState.fold(
+                { Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show() },
+                { rentalCarsAdapter.submitRentalCars(it) }
+            )
         }
 
         viewModel.viewState.observe(this, viewStateObserver)
