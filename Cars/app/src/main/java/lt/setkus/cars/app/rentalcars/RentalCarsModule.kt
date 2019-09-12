@@ -9,7 +9,7 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val rentalCarsModule = module {
-    scope(named<RentalCarsMapFragment>()) {
+    scope(named<RentalCarsActivity>()) {
         scoped { responseToDomainMapper }
         scoped<CarsRepository> { CarsDataRepository(get(), get()) }
         scoped { RentalCarsUseCase(get(), get()) }
