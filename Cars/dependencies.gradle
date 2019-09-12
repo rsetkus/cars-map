@@ -14,6 +14,9 @@ ext {
     koinVersion = '2.0.1'
     googlePlayServicesMapsVersion = '15.0.1'
     materialComponentsVersion = '1.0.0'
+    recyclerViewVersion = "1.0.0"
+    cardViewVersion = "1.0.0"
+    constraintLayoutVersion = "2.0.0-alpha3"
 
     // Test dependencies
     junitVersion = '4.12'
@@ -25,6 +28,9 @@ ext {
     appDependencies = [
             kotlinStdLibrary        : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
             appCompat               : "androidx.appcompat:appcompat:$appCompatVersion",
+            constraintLayout        : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            recyclerView            : "androidx.recyclerview:recyclerview:$recyclerViewVersion",
+            cardView                : "androidx.cardview:cardview:$cardViewVersion",
             coreKotlinExtensions    : "androidx.core:core-ktx:$coreKotlinExtensionsVersion",
             rxjava2                 : "io.reactivex.rxjava2:rxjava:$rxjava2Version",
             rxAndroid               : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
