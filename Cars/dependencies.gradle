@@ -13,6 +13,7 @@ ext {
     lifecycleVersion = '2.0.0'
     koinVersion = '2.0.1'
     googlePlayServicesMapsVersion = '15.0.1'
+    materialComponentsVersion = '1.0.0'
 
     // Test dependencies
     junitVersion = '4.12'
@@ -33,7 +34,8 @@ ext {
             koin                    : "org.koin:koin-android:$koinVersion",
             koinScope               : "org.koin:koin-androidx-scope:$koinVersion",
             koinViewModel           : "org.koin:koin-androidx-viewmodel:$koinVersion",
-            maps                    : "com.google.android.gms:play-services-maps:$googlePlayServicesMapsVersion"
+            maps                    : "com.google.android.gms:play-services-maps:$googlePlayServicesMapsVersion",
+            materialComponents      : "com.google.android.material:material:$materialComponentsVersion"
     ]
 
     appTestDependencies = [

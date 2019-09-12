@@ -50,6 +50,7 @@ dependencies {
     implementation appDependencies.koinScope
     implementation appDependencies.koinViewModel
     implementation appDependencies.maps
+    implementation appDependencies.materialComponents
 
     testImplementation appTestDependencies.junit
     testImplementation appTestDependencies.mockk
