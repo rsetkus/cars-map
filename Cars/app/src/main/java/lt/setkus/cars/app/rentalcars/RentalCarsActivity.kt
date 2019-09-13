@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import arrow.core.Either
 import kotlinx.android.synthetic.main.bottom_sheet.carsList
@@ -23,6 +24,12 @@ class RentalCarsActivity : AppCompatActivity() {
         carsList.adapter = rentalCarsAdapter
         val layoutManager = LinearLayoutManager(this)
         carsList.layoutManager = layoutManager
+
+        getDrawable(R.drawable.divider)?.apply {
+            val dividerItemDecoration = DividerItemDecoration(this@RentalCarsActivity, DividerItemDecoration.VERTICAL)
+            dividerItemDecoration.setDrawable(this)
+            carsList.addItemDecoration(dividerItemDecoration)
+        }
 
         val viewStateObserver = Observer<Either<Throwable, List<CarViewData>>> { viewState ->
             viewState.fold(
