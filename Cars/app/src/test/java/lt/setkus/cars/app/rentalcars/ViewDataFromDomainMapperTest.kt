@@ -48,7 +48,7 @@ class ViewDataFromDomainMapperTest {
         viewData.carModelName == domain.modelName && viewData.ownerName == domain.ownerName &&
                 viewData.fuelIconId == verifyFuelIcon(domain.fuelLevel) &&
                 viewData.fuelTankLevel == verifyFuelLabel(domain.fuelLevel) &&
-                viewData.imageUrl == domain.carImageUrl
+                viewData.imageUrl == domain.carImageUrl && viewData.fuelType == verifyFuelType(domain.fuelType)
 
     /**
      * Not sure if it is good idea because tests reveals concrete implementation
@@ -64,5 +64,12 @@ class ViewDataFromDomainMapperTest {
         when (level) {
             1.0 -> R.string.fuel_level_full
             else -> R.string.fuel_level_unknown
+        }
+
+    private fun verifyFuelType(type: String) =
+        when (type) {
+            "D" -> R.string.diesel_type
+            "P" -> R.string.petrol_type
+            else -> R.string.unknown_fuel_type
         }
 }

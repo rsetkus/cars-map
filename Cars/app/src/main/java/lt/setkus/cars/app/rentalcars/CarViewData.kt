@@ -8,5 +8,6 @@ data class CarViewData(
     val ownerName: CharSequence,
     @DrawableRes val fuelIconId: Int,
     @StringRes val fuelTankLevel: Int,
-    val imageUrl: String
+    val imageUrl: String,
+    @StringRes val fuelType: Int
 )

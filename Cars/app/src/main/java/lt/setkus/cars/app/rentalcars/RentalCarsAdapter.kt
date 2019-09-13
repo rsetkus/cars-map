@@ -9,6 +9,7 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_car.carImage
 import kotlinx.android.synthetic.main.item_car.carModelName
 import kotlinx.android.synthetic.main.item_car.fuelLevel
+import kotlinx.android.synthetic.main.item_car.fuelType
 import kotlinx.android.synthetic.main.item_car.ownerName
 import lt.setkus.cars.R
 
@@ -40,6 +41,7 @@ class RentalCarsAdapter : RecyclerView.Adapter<RentalCarsAdapter.RentalCarViewHo
             ownerName.text = car.ownerName
             fuelLevel.setText(car.fuelTankLevel)
             fuelLevel.setCompoundDrawablesWithIntrinsicBounds(car.fuelIconId, 0, 0, 0)
+            fuelType.setText(car.fuelType)
             loadCarImage(car.imageUrl)
         }
 

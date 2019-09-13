@@ -2,4 +2,7 @@
     <string name="app_name">Cars</string>
     <string name="fuel_level_full">Full Tank</string>
     <string name="fuel_level_unknown">Fuel level is unknown</string>
+    <string name="diesel_type">diesel</string>
+    <string name="petrol_type">petrol</string>
+    <string name="unknown_fuel_type">unknown</string>
 </resources>
