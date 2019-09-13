@@ -13,15 +13,34 @@
 
         <TextView
             android:id="@+id/carModelName"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textAllCaps="true"
+            android:textSize="16sp"
+            android:background="@color/black"
+            android:textColor="@color/white"
+            android:textAppearance="@style/TextAppearance.CarTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Mano svajoniu masina" />
+
+        <TextView
+            android:id="@+id/ownerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/carModelName"
+            app:layout_constraintStart_toStartOf="parent"
+            android:drawableStart="@drawable/ic_user_24px"
+            android:drawablePadding="5dp"
+            tools:text="Jonas"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -42,5 +42,5 @@ class CarViewDataKtTest {
     }
 
     private fun verifyViewDataAgainstDomain(viewData: CarViewData, domain: Car) =
-        viewData.carModelName == domain.modelName
+        viewData.carModelName == domain.modelName && viewData.ownerName == domain.ownerName
 }

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_car.carModelName
+import kotlinx.android.synthetic.main.item_car.ownerName
 import lt.setkus.cars.R
 
 class RentalCarsAdapter : RecyclerView.Adapter<RentalCarsAdapter.RentalCarViewHolder>() {
@@ -33,6 +34,7 @@ class RentalCarsAdapter : RecyclerView.Adapter<RentalCarsAdapter.RentalCarViewHo
 
         fun bindCar(car: CarViewData) {
             carModelName.text = car.carModelName
+            ownerName.text = car.ownerName
         }
     }
 }

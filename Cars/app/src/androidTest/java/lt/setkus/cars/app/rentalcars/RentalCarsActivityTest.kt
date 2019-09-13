@@ -48,6 +48,7 @@ class RentalCarsActivityTest {
 
         onView(withId(R.id.bottomSheetPeek)).perform(swipeUp())
         onView(withText("MINI")).check(matches(isDisplayed()))
+        onView(withText("Vanessa")).check(matches(isDisplayed()))
     }
 
     private fun mockCarsResponse(path: String) {
