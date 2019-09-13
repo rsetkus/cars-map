@@ -4,27 +4,45 @@ import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import arrow.core.Either
+import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import lt.setkus.cars.domain.rentalcars.Car
 import lt.setkus.cars.domain.rentalcars.RentalCarsUseCase
 
 class RentalCarsViewModel(
     private val useCase: RentalCarsUseCase,
-    private val viewDataMapper: Function1<List<Car>, List<CarViewData>>
+    private val carDataMapper: Function1<List<Car>, List<CarViewData>>,
+    private val carPositionDataMapper: (List<Car>) -> List<CarPosition>
 ) : ViewModel() {
 
     private val disposables = CompositeDisposable()
-    val viewState = MutableLiveData<Either<Throwable, List<CarViewData>>>()
+    val carDataState = MutableLiveData<Either<Throwable, List<CarViewData>>>()
+    val carPositionState = MutableLiveData<Either<Throwable, List<CarPosition>>>()
 
     fun pullRentalCars() {
-        val disposable = useCase.build()
-            .map(viewDataMapper)
-            .subscribe(
-                { list: List<CarViewData> -> viewState.postValue(Either.right(list)) },
-                { viewState.postValue(Either.left(it)) }
-            )
-        disposables.add(disposable)
+        val single = useCase.build().cache()
+
+        val carDataDisposable = subscribeForCarData(single)
+        val carPositionDataDisposable = subscribeForCarPositionData(single)
+
+        disposables.addAll(carDataDisposable, carPositionDataDisposable)
     }
+
+    private fun subscribeForCarData(single: Single<List<Car>>) =
+        single
+            .map(carDataMapper)
+            .subscribe(
+                { list: List<CarViewData> -> carDataState.postValue(Either.right(list)) },
+                { carDataState.postValue(Either.left(it)) }
+            )
+
+    private fun subscribeForCarPositionData(single: Single<List<Car>>) =
+        single
+            .map(carPositionDataMapper)
+            .subscribe(
+                { list: List<CarPosition> -> carPositionState.postValue(Either.right(list)) },
+                { carPositionState.postValue(Either.left(it)) }
+            )
 
     @VisibleForTesting
     public override fun onCleared() {

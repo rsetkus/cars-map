@@ -31,14 +31,22 @@ class RentalCarsActivity : AppCompatActivity() {
             carsList.addItemDecoration(dividerItemDecoration)
         }
 
-        val viewStateObserver = Observer<Either<Throwable, List<CarViewData>>> { viewState ->
+        val carDataStateObserver = Observer<Either<Throwable, List<CarViewData>>> { viewState ->
             viewState.fold(
                 { Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show() },
                 { rentalCarsAdapter.submitRentalCars(it) }
             )
         }
 
-        viewModel.viewState.observe(this, viewStateObserver)
+        val positionsStateObserver = Observer<Either<Throwable, List<CarPosition>>> { viewState ->
+            viewState.fold(
+                { Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show() },
+                { Toast.makeText(this, "Got Positions", Toast.LENGTH_SHORT).show() }
+            )
+        }
+
+        viewModel.carDataState.observe(this, carDataStateObserver)
+        viewModel.carPositionState.observe(this, positionsStateObserver)
         viewModel.pullRentalCars()
     }
 }

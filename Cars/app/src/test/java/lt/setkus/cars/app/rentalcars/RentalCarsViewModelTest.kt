@@ -21,19 +21,20 @@ class RentalCarsViewModelTest {
 
     val useCase = mockk<RentalCarsUseCase>()
     val mapper = mockk<(List<Car>) -> List<CarViewData>>()
+    val positionMapper = mockk<(List<Car>) -> List<CarPosition>>()
 
-    val viewModel = RentalCarsViewModel(useCase, mapper)
+    val viewModel = RentalCarsViewModel(useCase, mapper, positionMapper)
 
     @Before
     fun setUp() {
-        every { mapper(any()) } returns listOf(mockk<CarViewData>())
+        every { mapper(any()) } returns listOf(mockk())
     }
 
     @Test
     fun `when requested data from view model then should emit view state`() {
         every { useCase.build() } returns Single.just(listOf())
 
-        val emittedItems = viewModel.viewState.testObserver()
+        val emittedItems = viewModel.carDataState.testObserver()
         viewModel.pullRentalCars()
 
         assertTrue(emittedItems.observedValues.first().isRight())
@@ -45,7 +46,7 @@ class RentalCarsViewModelTest {
     fun `when data requested from view model and error occurs then should emit error state`() {
         every { useCase.build() } returns Single.error(Throwable())
 
-        val emittedItems = viewModel.viewState.testObserver()
+        val emittedItems = viewModel.carDataState.testObserver()
         viewModel.pullRentalCars()
 
         assertTrue(emittedItems.observedValues.first().isLeft())

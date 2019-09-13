@@ -11,9 +11,10 @@ import org.koin.dsl.module
 val rentalCarsModule = module {
     scope(named<RentalCarsActivity>()) {
         scoped(named("responseMapper")) { responseToDomainMapper }
-        scoped(named("viewMapper")) { ViewDataFromDomainMapper() }
+        scoped(named("carMapper")) { ViewDataFromDomainMapper() }
+        scoped(named("positionMapper")) { carPositionMapperFromDomain }
         scoped<CarsRepository> { CarsDataRepository(get(), get(named("responseMapper"))) }
         scoped { RentalCarsUseCase(get(), get()) }
-        viewModel { RentalCarsViewModel(get(), get(named("viewMapper"))) }
+        viewModel { RentalCarsViewModel(get(), get(named("carMapper")), get(named("positionMapper"))) }
     }
 }

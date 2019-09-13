@@ -45,6 +45,7 @@ dependencies {
     api dataDependencies.retrofitGsonConverter
     api dataDependencies.retrofitRxJavaAdapter
     implementation dataDependencies.gson
+    implementation dataDependencies.httpLogging
 
     testImplementation dataTestDependencies.junit
     testImplementation dataTestDependencies.mockk
