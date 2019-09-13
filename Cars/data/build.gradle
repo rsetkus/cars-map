@@ -41,9 +41,9 @@ dependencies {
     implementation dataDependencies.appCompat
     implementation dataDependencies.coreKotlinExtensions
     implementation dataDependencies.rxjava2
-    implementation dataDependencies.retrofit
-    implementation dataDependencies.retrofitGsonConverter
-    implementation dataDependencies.retrofitRxJavaAdapter
+    api dataDependencies.retrofit
+    api dataDependencies.retrofitGsonConverter
+    api dataDependencies.retrofitRxJavaAdapter
     implementation dataDependencies.gson
 
     testImplementation dataTestDependencies.junit

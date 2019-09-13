@@ -14,17 +14,19 @@ ext {
     koinVersion = '2.0.1'
     googlePlayServicesMapsVersion = '15.0.1'
     materialComponentsVersion = '1.0.0'
-    recyclerViewVersion = "1.0.0"
-    cardViewVersion = "1.0.0"
-    constraintLayoutVersion = "2.0.0-alpha3"
-    arrowVersion = "0.8.0"
+    recyclerViewVersion = '1.0.0'
+    cardViewVersion = '1.0.0'
+    constraintLayoutVersion = '2.0.0-alpha3'
+    arrowVersion = '0.8.0'
 
     // Test dependencies
     junitVersion = '4.12'
+    androidJunitVersion = '1.1.1'
     testRunnerVersion = '1.2.0'
     espressoCoreVersion = '3.2.0'
     mockkVersion = '1.9.3'
     forgerVersion = '0.12'
+    mockWebServerVersion = '3.11.0'
 
     appDependencies = [
             kotlinStdLibrary        : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
@@ -54,7 +56,10 @@ ext {
             espressoCore                : "androidx.test.espresso:espresso-core:$espressoCoreVersion",
             mockk                       : "io.mockk:mockk:$mockkVersion",
             androidLifeCycleTestCore    : "androidx.arch.core:core-testing:$lifecycleVersion",
-            forger                      : "com.github.xgouchet:Elmyr:$forgerVersion"
+            forger                      : "com.github.xgouchet:Elmyr:$forgerVersion",
+            mockWebServer               : "com.squareup.okhttp3:mockwebserver:$mockWebServerVersion",
+            androidTestRules            : "androidx.test:rules:$testRunnerVersion",
+            androidTestJunit            : "androidx.test.ext:junit:$androidJunitVersion"
     ]
 
     dataDependencies = [
