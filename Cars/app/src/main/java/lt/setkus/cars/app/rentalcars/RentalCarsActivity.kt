@@ -20,7 +20,35 @@ class RentalCarsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_rental_cars)
+        setupCarsList()
+        pullCarsData()
+    }
 
+    private fun pullCarsData() {
+        viewModel.carDataState.observe(this, createCarDataObserver())
+        viewModel.carPositionState.observe(this, createPositionDataObserver())
+        viewModel.pullRentalCars()
+    }
+
+    private fun createPositionDataObserver(): Observer<Either<Throwable, List<CarPosition>>> {
+        return Observer { viewState ->
+            viewState.fold(
+                { Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show() },
+                { Toast.makeText(this, "Got Positions", Toast.LENGTH_SHORT).show() }
+            )
+        }
+    }
+
+    private fun createCarDataObserver(): Observer<Either<Throwable, List<CarViewData>>> {
+        return Observer { viewState ->
+            viewState.fold(
+                { Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show() },
+                { rentalCarsAdapter.submitRentalCars(it) }
+            )
+        }
+    }
+
+    private fun setupCarsList() {
         carsList.adapter = rentalCarsAdapter
         val layoutManager = LinearLayoutManager(this)
         carsList.layoutManager = layoutManager
@@ -30,23 +58,5 @@ class RentalCarsActivity : AppCompatActivity() {
             dividerItemDecoration.setDrawable(this)
             carsList.addItemDecoration(dividerItemDecoration)
         }
-
-        val carDataStateObserver = Observer<Either<Throwable, List<CarViewData>>> { viewState ->
-            viewState.fold(
-                { Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show() },
-                { rentalCarsAdapter.submitRentalCars(it) }
-            )
-        }
-
-        val positionsStateObserver = Observer<Either<Throwable, List<CarPosition>>> { viewState ->
-            viewState.fold(
-                { Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show() },
-                { Toast.makeText(this, "Got Positions", Toast.LENGTH_SHORT).show() }
-            )
-        }
-
-        viewModel.carDataState.observe(this, carDataStateObserver)
-        viewModel.carPositionState.observe(this, positionsStateObserver)
-        viewModel.pullRentalCars()
     }
 }
