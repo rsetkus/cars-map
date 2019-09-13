@@ -10,7 +10,7 @@ import lt.setkus.cars.domain.rentalcars.RentalCarsUseCase
 
 class RentalCarsViewModel(
     private val useCase: RentalCarsUseCase,
-    private val viewDataMapper: (List<Car>) -> List<CarViewData>
+    private val viewDataMapper: Function1<List<Car>, List<CarViewData>>
 ) : ViewModel() {
 
     private val disposables = CompositeDisposable()

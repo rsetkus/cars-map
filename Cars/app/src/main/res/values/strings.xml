@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Cars</string>
+    <string name="fuel_level_full">Full Tank</string>
+    <string name="fuel_level_unknown">Fuel level is unknown</string>
 </resources>

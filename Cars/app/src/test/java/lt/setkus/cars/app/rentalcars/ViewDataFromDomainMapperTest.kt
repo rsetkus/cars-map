@@ -1,15 +1,18 @@
 package lt.setkus.cars.app.rentalcars
 
 import fr.xgouchet.elmyr.junit.JUnitForger
+import lt.setkus.cars.R
 import lt.setkus.cars.domain.rentalcars.Car
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 
-class CarViewDataKtTest {
+class ViewDataFromDomainMapperTest {
 
     @get:Rule
     val forger = JUnitForger()
+
+    val mapper = ViewDataFromDomainMapper()
 
     val cars = listOf(
         Car(
@@ -34,7 +37,7 @@ class CarViewDataKtTest {
 
     @Test
     fun `test car mapping from response to view data`() {
-        val carsViewData = viewDataFromDomainMapper(cars)
+        val carsViewData = mapper(cars)
         val matchAll = cars.zip(carsViewData).all {
             verifyViewDataAgainstDomain(it.second, it.first)
         }
@@ -42,5 +45,23 @@ class CarViewDataKtTest {
     }
 
     private fun verifyViewDataAgainstDomain(viewData: CarViewData, domain: Car) =
-        viewData.carModelName == domain.modelName && viewData.ownerName == domain.ownerName
+        viewData.carModelName == domain.modelName && viewData.ownerName == domain.ownerName &&
+                viewData.fuelIconId == verifyFuelIcon(domain.fuelLevel) &&
+                viewData.fuelTankLevel == verifyFuelLabel(domain.fuelLevel)
+
+    /**
+     * Not sure if it is good idea because tests reveals concrete implementation
+     * but because test data is generated I don't see other way testing correct mapping
+     */
+    private fun verifyFuelIcon(level: Double) =
+        when (level) {
+            1.0 -> R.drawable.ic_battery_full_black_24dp
+            else -> R.drawable.ic_battery_unknown_black_24dp
+        }
+
+    private fun verifyFuelLabel(level: Double) =
+        when (level) {
+            1.0 -> R.string.fuel_level_full
+            else -> R.string.fuel_level_unknown
+        }
 }
