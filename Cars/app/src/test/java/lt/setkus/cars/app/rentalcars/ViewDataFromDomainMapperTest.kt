@@ -47,7 +47,8 @@ class ViewDataFromDomainMapperTest {
     private fun verifyViewDataAgainstDomain(viewData: CarViewData, domain: Car) =
         viewData.carModelName == domain.modelName && viewData.ownerName == domain.ownerName &&
                 viewData.fuelIconId == verifyFuelIcon(domain.fuelLevel) &&
-                viewData.fuelTankLevel == verifyFuelLabel(domain.fuelLevel)
+                viewData.fuelTankLevel == verifyFuelLabel(domain.fuelLevel) &&
+                viewData.imageUrl == domain.carImageUrl
 
     /**
      * Not sure if it is good idea because tests reveals concrete implementation

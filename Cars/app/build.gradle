@@ -58,6 +58,7 @@ dependencies {
     implementation appDependencies.recyclerView
     implementation appDependencies.cardView
     implementation appDependencies.constraintLayout
+    implementation appDependencies.picasso
 
     implementation appDependencies.arrowCore
     implementation appDependencies.arrowSyntax

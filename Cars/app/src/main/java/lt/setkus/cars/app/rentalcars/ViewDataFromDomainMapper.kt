@@ -12,7 +12,8 @@ class ViewDataFromDomainMapper : Function1<List<Car>, List<CarViewData>> {
                 it.modelName,
                 it.ownerName,
                 getFuelIconLevel(it.fuelLevel),
-                getFuelLabelByLevel(it.fuelLevel)
+                getFuelLabelByLevel(it.fuelLevel),
+                it.carImageUrl
             )
         }
 

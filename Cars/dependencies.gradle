@@ -18,6 +18,7 @@ ext {
     cardViewVersion = '1.0.0'
     constraintLayoutVersion = '2.0.0-alpha3'
     arrowVersion = '0.8.0'
+    picasoVersion = '2.71828'
 
     // Test dependencies
     junitVersion = '4.12'
@@ -47,7 +48,8 @@ ext {
             materialComponents      : "com.google.android.material:material:$materialComponentsVersion",
             arrowCore               : "io.arrow-kt:arrow-core:$arrowVersion",
             arrowSyntax             : "io.arrow-kt:arrow-syntax:$arrowVersion",
-            arrowKapt               : "io.arrow-kt:arrow-meta:$arrowVersion"
+            arrowKapt               : "io.arrow-kt:arrow-meta:$arrowVersion",
+            picasso                 : "com.squareup.picasso:picasso:$picasoVersion"
     ]
 
     appTestDependencies = [

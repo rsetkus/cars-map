@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.item_car.carImage
 import kotlinx.android.synthetic.main.item_car.carModelName
 import kotlinx.android.synthetic.main.item_car.fuelLevel
 import kotlinx.android.synthetic.main.item_car.ownerName
@@ -38,6 +40,17 @@ class RentalCarsAdapter : RecyclerView.Adapter<RentalCarsAdapter.RentalCarViewHo
             ownerName.text = car.ownerName
             fuelLevel.setText(car.fuelTankLevel)
             fuelLevel.setCompoundDrawablesWithIntrinsicBounds(car.fuelIconId, 0, 0, 0)
+            loadCarImage(car.imageUrl)
+        }
+
+        private fun loadCarImage(url: String) {
+            Picasso.get()
+                .load(url)
+                .noFade()
+                .fit()
+                .centerInside()
+                .placeholder(R.mipmap.placeholder_vehicle_angle)
+                .into(carImage)
         }
     }
 }
