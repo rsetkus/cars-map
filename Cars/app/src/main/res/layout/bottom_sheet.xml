@@ -11,14 +11,26 @@
     app:behavior_peekHeight="80dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-    <TextView
-        android:id="@+id/bottomSheetPeek"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="@color/primaryLightColor"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:elevation="5dp"
-        android:text="Bottom sheet peek" />
+        android:elevation="5dp">
+
+        <TextView
+            android:id="@+id/bottomSheetPeek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_directions_car_black_24dp"
+            android:drawablePadding="5dp"
+            android:fontFamily="@font/alfa_slab_one"
+            android:gravity="center"
+            android:text="@string/cars_options"
+            android:textAllCaps="true" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/carsList"

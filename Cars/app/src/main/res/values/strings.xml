@@ -5,4 +5,5 @@
     <string name="diesel_type">diesel</string>
     <string name="petrol_type">petrol</string>
     <string name="unknown_fuel_type">unknown</string>
+    <string name="cars_options">available options</string>
 </resources>
