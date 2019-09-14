@@ -9,4 +9,5 @@
     <string name="unknown_fuel_type">unknown</string>
     <string name="cars_options">available options</string>
     <string name="google_maps_not_available">Google Maps are not available on this device!</string>
+    <string name="error_state_message">Oops... This is embarrassing. Please try again later</string>
 </resources>

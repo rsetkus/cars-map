@@ -14,6 +14,7 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.bottom_sheet.bottomSheet
 import kotlinx.android.synthetic.main.bottom_sheet.carsList
+import kotlinx.android.synthetic.main.bottom_sheet.carsStateLayout
 import lt.setkus.cars.R
 import lt.setkus.cars.app.common.animateCameraToNewPosition
 import lt.setkus.cars.app.common.drawMarkers
@@ -57,6 +58,7 @@ class RentalCarsActivity : AppCompatActivity(), OnMapReadyCallback {
             initMap()
         }
         viewModel.carDataState.observe(this, createCarDataObserver())
+        carsStateLayout.loading()
         viewModel.pullRentalCars()
     }
 
@@ -87,8 +89,11 @@ class RentalCarsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun createCarDataObserver(): Observer<Either<Throwable, List<CarViewData>>> {
         return Observer { viewState ->
             viewState.fold(
-                { Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show() },
-                { rentalCarsAdapter.submitRentalCars(it) }
+                { carsStateLayout.error() },
+                {
+                    rentalCarsAdapter.submitRentalCars(it)
+                    carsStateLayout.content()
+                }
             )
         }
     }
