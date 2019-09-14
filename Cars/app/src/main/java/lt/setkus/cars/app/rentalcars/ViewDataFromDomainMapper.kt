@@ -23,14 +23,18 @@ class ViewDataFromDomainMapper : Function1<List<Car>, List<CarViewData>> {
     @StringRes
     private fun getFuelLabelByLevel(level: Double) =
         when (level) {
-            1.0 -> R.string.fuel_level_full
+            in (0.90..1.00) -> R.string.fuel_level_full
+            in (0.55..0.90) -> R.string.fuel_level_high
+            in (0.20..0.55) -> R.string.fuel_level_low
             else -> R.string.fuel_level_unknown
         }
 
     @DrawableRes
     private fun getFuelIconLevel(level: Double) =
         when (level) {
-            1.0 -> R.drawable.ic_battery_full_black_24dp
+            in (0.90..1.00) -> R.drawable.ic_battery_full_black_24dp
+            in (0.55..0.90) -> R.drawable.ic_battery_80_black_24dp
+            in (0.20..0.55) -> R.drawable.ic_battery_20_black_24dp
             else -> R.drawable.ic_battery_unknown_black_24dp
         }
 

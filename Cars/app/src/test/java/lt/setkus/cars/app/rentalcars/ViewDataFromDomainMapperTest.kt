@@ -1,5 +1,7 @@
 package lt.setkus.cars.app.rentalcars
 
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import fr.xgouchet.elmyr.junit.JUnitForger
 import lt.setkus.cars.R
 import lt.setkus.cars.domain.rentalcars.Car
@@ -25,7 +27,7 @@ class ViewDataFromDomainMapperTest {
             forger.anElementFrom(listOf("yellow", "green", "red")),
             forger.anElementFrom(listOf("SEDAN", "COUPE", "ROADSTER", "MINI")),
             forger.anElementFrom("D", "G", "P"),
-            forger.aDouble(min = 0.0, max = 1.0),
+            forger.aDouble(min = 0.00, max = 1.00),
             forger.anElementFrom("A", "M"),
             forger.aStringMatching("\\D{3} \\d{3}"),
             forger.aDouble(min = -18.000000, max = 66.000000),
@@ -55,15 +57,21 @@ class ViewDataFromDomainMapperTest {
      * Not sure if it is good idea because tests reveals concrete implementation
      * but because test data is generated I don't see other way testing correct mapping
      */
+    @DrawableRes
     private fun verifyFuelIcon(level: Double) =
         when (level) {
-            1.0 -> R.drawable.ic_battery_full_black_24dp
+            in (0.90..1.00) -> R.drawable.ic_battery_full_black_24dp
+            in (0.55..0.90) -> R.drawable.ic_battery_80_black_24dp
+            in (0.20..0.55) -> R.drawable.ic_battery_20_black_24dp
             else -> R.drawable.ic_battery_unknown_black_24dp
         }
 
+    @StringRes
     private fun verifyFuelLabel(level: Double) =
         when (level) {
-            1.0 -> R.string.fuel_level_full
+            in (0.90..1.00) -> R.string.fuel_level_full
+            in (0.55..0.90) -> R.string.fuel_level_high
+            in (0.20..0.55) -> R.string.fuel_level_low
             else -> R.string.fuel_level_unknown
         }
 
