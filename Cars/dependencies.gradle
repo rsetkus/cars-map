@@ -9,7 +9,6 @@ ext {
     rxjava2Version = '2.2.11'
     rxAndroidVersion = '2.1.1'
     retrofitVersion = '2.6.1'
-    httpLoggingInterceptor = '4.2.0'
     gsonVersion = '2.8.5'
     lifecycleVersion = '2.0.0'
     koinVersion = '2.0.1'
@@ -73,8 +72,7 @@ ext {
             retrofit                : "com.squareup.retrofit2:retrofit:$retrofitVersion",
             retrofitGsonConverter   : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
             retrofitRxJavaAdapter   : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
-            gson                    : "com.google.code.gson:gson:$gsonVersion",
-            httpLogging             : "com.squareup.okhttp3:logging-interceptor:$httpLoggingInterceptor"
+            gson                    : "com.google.code.gson:gson:$gsonVersion"
     ]
 
     dataTestDependencies = [
