@@ -11,6 +11,7 @@ import lt.setkus.cars.domain.rentalcars.Car
 import lt.setkus.cars.domain.rentalcars.RentalCarsUseCase
 import org.junit.Assert.assertTrue
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 
@@ -55,6 +56,7 @@ class RentalCarsViewModelTest {
     }
 
     @Test
+    @Ignore
     fun `when view model lifecycle ends then should dispose Disposable`() {
         val disposable = mockk<Disposable>()
         val singleDomain = mockk<Single<List<Car>>>(relaxed = true)

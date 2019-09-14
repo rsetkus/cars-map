@@ -4,10 +4,10 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import lt.setkus.cars.domain.rentalcars.Car
 
-data class CarPosition(val latitude: Double, val longitude: Double)
+data class CarPosition(val id: String, val latitude: Double, val longitude: Double)
 
 val carPositionMapperFromDomain: (List<Car>) -> List<CarPosition> = { cars ->
-    cars.map { CarPosition(it.latitude, it.longitude) }
+    cars.map { CarPosition(it.id, it.latitude, it.longitude) }
 }
 
 /**

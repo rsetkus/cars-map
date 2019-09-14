@@ -48,7 +48,8 @@ class ViewDataFromDomainMapperTest {
         viewData.carModelName == domain.modelName && viewData.ownerName == domain.ownerName &&
                 viewData.fuelIconId == verifyFuelIcon(domain.fuelLevel) &&
                 viewData.fuelTankLevel == verifyFuelLabel(domain.fuelLevel) &&
-                viewData.imageUrl == domain.carImageUrl && viewData.fuelType == verifyFuelType(domain.fuelType)
+                viewData.imageUrl == domain.carImageUrl && viewData.fuelType == verifyFuelType(domain.fuelType) &&
+                viewData.id == domain.id
 
     /**
      * Not sure if it is good idea because tests reveals concrete implementation

@@ -10,6 +10,7 @@ class ViewDataFromDomainMapper : Function1<List<Car>, List<CarViewData>> {
     override fun invoke(input: List<Car>) =
         input.map {
             CarViewData(
+                it.id,
                 it.modelName,
                 it.ownerName,
                 getFuelIconLevel(it.fuelLevel),

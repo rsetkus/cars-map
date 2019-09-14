@@ -13,7 +13,8 @@ import kotlinx.android.synthetic.main.item_car.fuelType
 import kotlinx.android.synthetic.main.item_car.ownerName
 import lt.setkus.cars.R
 
-class RentalCarsAdapter : RecyclerView.Adapter<RentalCarsAdapter.RentalCarViewHolder>() {
+class RentalCarsAdapter(val clickListener: (CarViewData) -> Unit) :
+    RecyclerView.Adapter<RentalCarsAdapter.RentalCarViewHolder>() {
 
     private val rentalCars = mutableListOf<CarViewData>()
 
@@ -30,8 +31,12 @@ class RentalCarsAdapter : RecyclerView.Adapter<RentalCarsAdapter.RentalCarViewHo
 
     override fun getItemCount() = rentalCars.size
 
-    override fun onBindViewHolder(holder: RentalCarViewHolder, position: Int) =
+    override fun onBindViewHolder(holder: RentalCarViewHolder, position: Int) {
         holder.bindCar(rentalCars[position])
+        holder.containerView.setOnClickListener {
+            clickListener(rentalCars[position])
+        }
+    }
 
     class RentalCarViewHolder(override val containerView: View) :
         RecyclerView.ViewHolder(containerView), LayoutContainer {
