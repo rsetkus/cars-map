@@ -16,12 +16,13 @@ import lt.setkus.cars.app.common.drawMarkers
 import lt.setkus.cars.app.common.executeIfGooglePlayServicesAvailable
 import lt.setkus.cars.app.common.moveCamera
 import org.koin.androidx.scope.currentScope
+import kotlin.properties.Delegates
 
 class RentalCarsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private val viewModel: RentalCarsViewModel by currentScope.inject()
     private val rentalCarsAdapter = RentalCarsAdapter()
-    private var googleMap: GoogleMap? = null
+    private var googleMap: GoogleMap by Delegates.notNull()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +33,7 @@ class RentalCarsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(map: GoogleMap?) {
-        googleMap = map
+        map?.apply { googleMap = this }
         viewModel.carPositionState.observe(this, createPositionDataObserver())
     }
 
@@ -62,7 +63,7 @@ class RentalCarsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun updateMap(positions: List<CarPosition>) {
-        googleMap?.apply {
+        with(googleMap) {
             drawMarkers(positions)
             moveCamera(positions, 300)
         }
