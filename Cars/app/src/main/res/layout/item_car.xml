@@ -18,13 +18,13 @@
 
         <ImageView
             android:id="@+id/carImage"
-            android:layout_width="150dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/barrier"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@mipmap/placeholder_vehicle_angle" />
+            tools:src="@mipmap/placeholder_vehicle_angle"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -42,10 +42,13 @@
             android:padding="10dp"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.CarTitle"
+            app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toTopOf="@+id/ownerName"
+            app:layout_constraintEnd_toEndOf="@+id/barrier"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Mano svajoniu masina" />
+            tools:text="Mano svajoniu masina pari geriausia" />
 
         <TextView
             android:id="@+id/ownerName"
@@ -53,8 +56,10 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_user_24px"
             android:drawablePadding="5dp"
-            android:gravity="center"
+            android:gravity="start"
             app:layout_constraintBottom_toTopOf="@+id/fuelLevel"
+            app:layout_constraintEnd_toEndOf="@+id/barrier"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/carModelName"
             tools:text="Jonas" />
@@ -64,24 +69,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawablePadding="5dp"
-            android:gravity="center"
+            android:gravity="start"
+            app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toTopOf="@+id/fuelType"
+            app:layout_constraintEnd_toEndOf="@+id/barrier"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/ownerName"
             tools:drawableStart="@drawable/ic_battery_full_black_24dp"
-            tools:text="Pilnas bakas" />
+            tools:text="Pilnut pilnutelis bakas" />
 
         <TextView
             android:id="@+id/fuelType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawablePadding="5dp"
-            android:gravity="center"
+            android:gravity="start"
             android:textAllCaps="true"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/barrier"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/fuelLevel"
             tools:text="dyzelis" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="left"
+            app:constraint_referenced_ids="carImage" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

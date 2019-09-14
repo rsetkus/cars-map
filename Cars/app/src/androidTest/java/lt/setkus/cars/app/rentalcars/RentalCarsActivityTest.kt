@@ -48,7 +48,7 @@ class RentalCarsActivityTest {
 
         onView(withId(R.id.bottomSheetPeek)).perform(swipeUp())
         onView(withText("MINI")).check(matches(isDisplayed()))
-        onView(withText(R.string.fuel_level_unknown)).check(matches(isDisplayed()))
+        onView(withText(R.string.fuel_level_high)).check(matches(isDisplayed()))
     }
 
     private fun mockCarsResponse(path: String) {
