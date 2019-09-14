@@ -2,4 +2,5 @@
 <resources>
     <dimen name="car_title_padding">10dp</dimen>
     <dimen name="car_title_text_size">16sp</dimen>
+    <dimen name="touch_raise">6dp</dimen>
 </resources>
