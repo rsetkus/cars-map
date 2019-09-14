@@ -47,5 +47,5 @@ class CarPositionKtTest {
 
     private fun verifyPosition(position: CarPosition, domain: Car) =
         position.latitude == domain.latitude && position.longitude == domain.longitude &&
-                position.id == domain.id
+                position.id == domain.id && position.title == domain.modelName
 }

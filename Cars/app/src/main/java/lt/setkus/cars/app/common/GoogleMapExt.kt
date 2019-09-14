@@ -16,7 +16,16 @@ fun GoogleMap.moveCamera(positions: List<CarPosition>, padding: Int = 0) {
 fun GoogleMap.drawMarkers(positions: List<CarPosition>): Map<String, Marker> {
     return positions
         .foldRight(mapOf()) { position, map ->
-            val marker = addMarker(MarkerOptions().position(LatLng(position.latitude, position.longitude)))
+            val marker =
+                addMarker(
+                    MarkerOptions().position(
+                        LatLng(
+                            position.latitude,
+                            position.longitude
+                        )
+                    ).title(position.title)
+                )
+
             map + mapOf(position.id to marker)
         }
 }
