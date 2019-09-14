@@ -18,6 +18,7 @@ import lt.setkus.cars.R
 import lt.setkus.cars.app.common.animateCameraToNewPosition
 import lt.setkus.cars.app.common.drawMarkers
 import lt.setkus.cars.app.common.executeIfGooglePlayServicesAvailable
+import lt.setkus.cars.app.common.initMapCamera
 import lt.setkus.cars.app.common.moveCamera
 import org.koin.androidx.scope.currentScope
 import kotlin.properties.Delegates
@@ -44,7 +45,10 @@ class RentalCarsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(map: GoogleMap?) {
-        map?.apply { googleMap = this }
+        map?.apply {
+            googleMap = this
+            initMapCamera()
+        }
         viewModel.carPositionState.observe(this, createPositionDataObserver())
     }
 

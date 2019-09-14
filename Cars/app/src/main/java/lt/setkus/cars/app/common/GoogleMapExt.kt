@@ -36,3 +36,14 @@ fun GoogleMap.animateCameraToNewPosition(
 
     animateCamera(CameraUpdateFactory.newCameraPosition(newPosition))
 }
+
+fun GoogleMap.initMapCamera(
+    latitude: Double = CENTER_OF_LITHUANIA_LATITUDE,
+    longitude: Double = CENTER_OF_LITHUANIA_LONGITUDE,
+    zoom: Float = 6f
+) {
+    moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitude, longitude), zoom))
+}
+
+private const val CENTER_OF_LITHUANIA_LATITUDE = 55.330041
+private const val CENTER_OF_LITHUANIA_LONGITUDE = 23.905423
