@@ -7,14 +7,21 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import arrow.core.Either
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import kotlinx.android.synthetic.main.bottom_sheet.carsList
 import lt.setkus.cars.R
+import lt.setkus.cars.app.common.drawMarkers
+import lt.setkus.cars.app.common.executeIfGooglePlayServicesAvailable
+import lt.setkus.cars.app.common.moveCamera
 import org.koin.androidx.scope.currentScope
 
-class RentalCarsActivity : AppCompatActivity() {
+class RentalCarsActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    val viewModel: RentalCarsViewModel by currentScope.inject()
-    val rentalCarsAdapter = RentalCarsAdapter()
+    private val viewModel: RentalCarsViewModel by currentScope.inject()
+    private val rentalCarsAdapter = RentalCarsAdapter()
+    private var googleMap: GoogleMap? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,18 +31,40 @@ class RentalCarsActivity : AppCompatActivity() {
         pullCarsData()
     }
 
-    private fun pullCarsData() {
-        viewModel.carDataState.observe(this, createCarDataObserver())
+    override fun onMapReady(map: GoogleMap?) {
+        googleMap = map
         viewModel.carPositionState.observe(this, createPositionDataObserver())
+    }
+
+    private fun pullCarsData() {
+        executeIfGooglePlayServicesAvailable {
+            initMap()
+        }
+        viewModel.carDataState.observe(this, createCarDataObserver())
         viewModel.pullRentalCars()
+    }
+
+    private fun initMap() {
+        val supportMapFragment =
+            supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
+        supportMapFragment?.apply {
+            getMapAsync(this@RentalCarsActivity)
+        }
     }
 
     private fun createPositionDataObserver(): Observer<Either<Throwable, List<CarPosition>>> {
         return Observer { viewState ->
             viewState.fold(
                 { Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show() },
-                { Toast.makeText(this, "Got Positions", Toast.LENGTH_SHORT).show() }
+                { updateMap(it) }
             )
+        }
+    }
+
+    private fun updateMap(positions: List<CarPosition>) {
+        googleMap?.apply {
+            drawMarkers(positions)
+            moveCamera(positions, 300)
         }
     }
 
@@ -54,7 +83,8 @@ class RentalCarsActivity : AppCompatActivity() {
         carsList.layoutManager = layoutManager
 
         getDrawable(R.drawable.divider)?.apply {
-            val dividerItemDecoration = DividerItemDecoration(this@RentalCarsActivity, DividerItemDecoration.VERTICAL)
+            val dividerItemDecoration =
+                DividerItemDecoration(this@RentalCarsActivity, DividerItemDecoration.VERTICAL)
             dividerItemDecoration.setDrawable(this)
             carsList.addItemDecoration(dividerItemDecoration)
         }

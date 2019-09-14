@@ -6,4 +6,5 @@
     <string name="petrol_type">petrol</string>
     <string name="unknown_fuel_type">unknown</string>
     <string name="cars_options">available options</string>
+    <string name="google_maps_not_available">Google Maps are not available on this device!</string>
 </resources>
