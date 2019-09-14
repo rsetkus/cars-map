@@ -5,7 +5,7 @@ branches:
 
 language: android
 dist: trusty
-
+sudo: required
 jdk: oraclejdk8
 
 env:
@@ -23,9 +23,11 @@ android:
     - build-tools-$ANDROID_BUILD_TOOLS
     - android-$ANDROID_API
     - android-$EMULATOR_API
-    - extra-google-google_play_services
-    - extra-android-m2repository
-    - sys-img-$ANDROID_ABI-google_apis-$EMULATOR_API
+    - extra-google-m2repository
+    - extra-android-m2repository # for design library
+    - addon-google_apis-google-19 # google play services
+    - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API
+    - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -38,11 +40,10 @@ cache:
 
 before_script:
   - android list targets
-  - echo no |  android create avd --force -n test -t "android-"$EMULATOR_API --abi $ANDROID_ABI --tag $ANDROID_TAG
+  - echo no |  android create avd --force -n test -t android-"$EMULATOR_API --abi $ANDROID_ABI --tag $ANDROID_TAG"
   - emulator -avd test -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
 
 script:
-  - cd Cars
-  - "./gradlew clean check connectedCheck"
+  - "./gradlew clean check connectedCheck -PdisablePreDex --stacktrace"
