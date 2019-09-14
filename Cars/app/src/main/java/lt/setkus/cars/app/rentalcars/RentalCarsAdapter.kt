@@ -13,8 +13,9 @@ import kotlinx.android.synthetic.main.item_car.fuelType
 import kotlinx.android.synthetic.main.item_car.ownerName
 import lt.setkus.cars.R
 
-class RentalCarsAdapter(val clickListener: (CarViewData) -> Unit) :
-    RecyclerView.Adapter<RentalCarsAdapter.RentalCarViewHolder>() {
+class RentalCarsAdapter(
+    val clickListener: (CarViewData) -> Unit
+) : RecyclerView.Adapter<RentalCarsAdapter.RentalCarViewHolder>() {
 
     private val rentalCars = mutableListOf<CarViewData>()
 
