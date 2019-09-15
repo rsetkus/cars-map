@@ -12,8 +12,9 @@ env:
     - ANDROID_API=27
     - EMULATOR_API=21
     - ANDROID_BUILD_TOOLS=27.0.3
-    - ANDROID_ABI=x86
+    - ANDROID_ABI=armeabi-v7a
     - ANDROID_TAG=google_apis
+    - ADB_INSTALL_TIMEOUT=5 # minutes
 android:
   components:
     - tools
@@ -34,13 +35,7 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
-before_script:
-  - android list targets
-  - echo no |  android create avd --force -n test -t "android-"$EMULATOR_API --abi $ANDROID_ABI --tag $ANDROID_TAG
-  - emulator -avd test -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
-
 script:
-  - "./gradlew clean check connectedCheck"
+  - cd SuperHero
+  - "./gradlew clean check"
 
