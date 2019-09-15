@@ -36,6 +36,6 @@ cache:
     - $HOME/.gradle/wrapper/
 
 script:
-  - cd SuperHero
+  - cd Cars
   - "./gradlew clean check"
 
