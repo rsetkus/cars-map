@@ -86,6 +86,7 @@ class StateLayout @JvmOverloads constructor(
 
     fun error(): StateLayout {
         layoutState = State.ERROR
+        updateLoadingVisibility(GONE)
         errorLayout?.visibility = View.VISIBLE
         return this
     }
@@ -102,7 +103,7 @@ class StateLayout @JvmOverloads constructor(
     }
 
     private fun prepareErrorLayout() {
-        errorLayout = LayoutInflater.from(context).inflate(loadingLayoutRes, null)
+        errorLayout = LayoutInflater.from(context).inflate(errorLayoutRes, null)
         errorLayout?.visibility = GONE
         addView(errorLayout, LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER))
     }
