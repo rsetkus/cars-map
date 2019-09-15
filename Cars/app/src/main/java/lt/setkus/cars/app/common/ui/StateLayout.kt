@@ -31,13 +31,12 @@ class StateLayout @JvmOverloads constructor(
             layoutState = State.CONTENT
         }
 
-        context.obtainStyledAttributes(attrs, R.styleable.StateLayout, 0, 0).apply {
-            try {
-                loadingLayoutRes = getResourceId(R.styleable.StateLayout_loadingLayout, R.layout.state_loading)
-                errorLayoutRes = getResourceId(R.styleable.StateLayout_errorLayout, R.layout.state_error)
-            } finally {
-                recycle()
-            }
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.StateLayout, 0, 0)
+        try {
+            loadingLayoutRes = typedArray.getResourceId(R.styleable.StateLayout_loadingLayout, R.layout.state_loading)
+            errorLayoutRes = typedArray.getResourceId(R.styleable.StateLayout_errorLayout, R.layout.state_error)
+        } finally {
+            typedArray.recycle()
         }
     }
 

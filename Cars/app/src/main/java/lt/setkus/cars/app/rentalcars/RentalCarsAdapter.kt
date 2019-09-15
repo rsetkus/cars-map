@@ -49,6 +49,7 @@ class RentalCarsAdapter(
             fuelLevel.setCompoundDrawablesWithIntrinsicBounds(car.fuelIconId, 0, 0, 0)
             fuelType.setText(car.fuelType)
             loadCarImage(car.imageUrl)
+            carImage.contentDescription = car.carModelName
         }
 
         private fun loadCarImage(url: String) {

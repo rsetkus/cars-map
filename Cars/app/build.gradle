@@ -33,6 +33,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    /**
+     * GoogleAppIndexingWarning - because it never will be published to the play store
+     * Overdraw - need to give a background to the bottom sheet otherwise it will be transparent
+     */
+    lintOptions {
+        disable 'GoogleAppIndexingWarning', "Overdraw"
+    }
 }
 
 dependencies {
