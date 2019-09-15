@@ -50,14 +50,14 @@ class RentalCarsActivity : AppCompatActivity(), OnMapReadyCallback {
             googleMap = this
             initMapCamera()
         }
-        viewModel.carPositionState.observe(this, createPositionDataObserver())
+        viewModel.getCarPositionState().observe(this, createPositionDataObserver())
     }
 
     private fun pullCarsData() {
         executeIfGooglePlayServicesAvailable {
             initMap()
         }
-        viewModel.carDataState.observe(this, createCarDataObserver())
+        viewModel.getCarDataState().observe(this, createCarDataObserver())
         carsStateLayout.loading()
         viewModel.pullRentalCars()
     }

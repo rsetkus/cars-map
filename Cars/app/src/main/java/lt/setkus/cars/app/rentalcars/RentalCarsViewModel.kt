@@ -1,6 +1,7 @@
 package lt.setkus.cars.app.rentalcars
 
 import androidx.annotation.VisibleForTesting
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import arrow.core.Either
@@ -16,8 +17,11 @@ class RentalCarsViewModel(
 ) : ViewModel() {
 
     private val disposables = CompositeDisposable()
-    val carDataState = MutableLiveData<Either<Throwable, List<CarViewData>>>()
-    val carPositionState = MutableLiveData<Either<Throwable, List<CarPosition>>>()
+    private val carDataState = MutableLiveData<Either<Throwable, List<CarViewData>>>()
+    private val carPositionState = MutableLiveData<Either<Throwable, List<CarPosition>>>()
+
+    fun getCarPositionState(): LiveData<Either<Throwable, List<CarPosition>>> = carPositionState
+    fun getCarDataState(): LiveData<Either<Throwable, List<CarViewData>>> = carDataState
 
     fun pullRentalCars() {
         val single = useCase.build().cache()

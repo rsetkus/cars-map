@@ -43,7 +43,7 @@ class RentalCarsViewModelTest {
     fun `when requested data from view model then should emit cars data`() {
         every { useCase.build() } returns Single.just(cars)
 
-        val emittedItems = viewModel.carDataState.testObserver()
+        val emittedItems = viewModel.getCarDataState().testObserver()
         viewModel.pullRentalCars()
 
         assertTrue(emittedItems.observedValues.first().isRight())
@@ -56,7 +56,7 @@ class RentalCarsViewModelTest {
     fun `when data requested from view model and error occurs then should emit error state for cars data`() {
         every { useCase.build() } returns Single.error(Throwable())
 
-        val emittedItems = viewModel.carDataState.testObserver()
+        val emittedItems = viewModel.getCarDataState().testObserver()
         viewModel.pullRentalCars()
 
         assertTrue(emittedItems.observedValues.first().isLeft())
@@ -69,7 +69,7 @@ class RentalCarsViewModelTest {
     fun `when requested data from view then should emit position data`() {
         every { useCase.build() } returns Single.just(cars)
 
-        val emittedItems = viewModel.carPositionState.testObserver()
+        val emittedItems = viewModel.getCarPositionState().testObserver()
         viewModel.pullRentalCars()
 
         assertTrue(emittedItems.observedValues.first().isRight())
@@ -82,7 +82,7 @@ class RentalCarsViewModelTest {
     fun `when requested data from view model and error occurs then should emit error for position data`() {
         every { useCase.build() } returns Single.error(Throwable())
 
-        val emittedItems = viewModel.carPositionState.testObserver()
+        val emittedItems = viewModel.getCarPositionState().testObserver()
         viewModel.pullRentalCars()
 
         assertTrue(emittedItems.observedValues.first().isLeft())
