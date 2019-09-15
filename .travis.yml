@@ -3,6 +3,11 @@ branches:
     - master
     - development
 
-language: java
+language: android
 dist: trusty
 jdk: oraclejdk8
+
+script:
+  - cd Car
+  - "./gradlew clean check"
+
