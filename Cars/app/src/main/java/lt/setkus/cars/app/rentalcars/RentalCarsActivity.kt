@@ -73,7 +73,13 @@ class RentalCarsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun createPositionDataObserver(): Observer<Either<Throwable, List<CarPosition>>> {
         return Observer { viewState ->
             viewState.fold(
-                { Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show() },
+                {
+                    Toast.makeText(
+                        this,
+                        getString(R.string.error_loading_cars_locations),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                },
                 { updateMap(it) }
             )
         }

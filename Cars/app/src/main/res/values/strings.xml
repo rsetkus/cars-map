@@ -11,4 +11,5 @@
     <string name="google_maps_not_available">Google Maps are not available on this device!</string>
     <string name="error_state_message">Oops&#8230; This is embarrassing. Please try again later</string>
     <string name="unknown_car_title">unknown car</string>
+    <string name="error_loading_cars_locations">Error location data</string>
 </resources>
