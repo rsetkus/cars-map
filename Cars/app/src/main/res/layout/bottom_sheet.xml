@@ -32,15 +32,24 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/carsList"
+    <lt.setkus.cars.app.common.ui.StateLayout
+        android:id="@+id/carsStateLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
         android:elevation="1dp"
-        android:scrollbarStyle="outsideOverlay"
-        android:scrollbars="vertical"
-        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_car"/>
+        app:loadingLayout="@layout/state_loading"
+        app:errorLayout="@layout/state_error">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/carsList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical"
+            tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_car"/>
+
+    </lt.setkus.cars.app.common.ui.StateLayout>
 
 </LinearLayout>
