@@ -1,3 +1,4 @@
+
  # Cars 
  [![Build Status](https://travis-ci.org/rsetkus/cars-map.svg?branch=master)](https://travis-ci.org/rsetkus/cars-map)
  
@@ -7,7 +8,7 @@
  ### [Kotlin](https://kotlinlang.org/)
  I :heart: Kotlin. Java is great too but due to certain reasons it has limitations. Let me put it this way, when I am writing Kotlin code most of the time I don't need to think **"how"**, I just need to know **"what"** I have to code.
 
-High-order functions, Sequences, data types you name it. All those language features helps to maintain and scale applications much easier then before. Also and most important thing, Kotlin is first class language by Google.
+High-order functions, Sequences, data types you name it. All those language features helps to maintain and scale applications much easier then before. Also and most important thing, Kotlin is first-class language for Android by Google.
 
 ### [Architecture Components]([https://developer.android.com/topic/libraries/architecture/](https://developer.android.com/topic/libraries/architecture/))
 
@@ -25,20 +26,20 @@ No doubt easiest way to setup RESTful  services :ok_hand:. Supports many adapter
 
 ### [Gson](https://github.com/google/gson)
 
-Just because easy to setup. There are many JSON serialization/deserialization libraries and which you should use depends on case. Interesting [Reddit thread ](https://www.reddit.com/r/androiddev/comments/684flw/why_use_moshi_over_gson/) to read about Moshi vs Gson.
+Just because easy to setup. There are many JSON serialization/deserialization libraries and which one you should use depends on case. Interesting [Reddit thread ](https://www.reddit.com/r/androiddev/comments/684flw/why_use_moshi_over_gson/) to read about Moshi vs Gson.
 
 ### [Koin](https://insert-koin.io/)
 Dagger2 is for Java projects. Period. I hate when I have to expose inner implementation of Kotlin classes and make them nullable or use *lateinit* just because Dagger cannot inject dependencies. Also, configuration is utterly clumsy. Always, have to go to documentation when I need to change Dagger setup. One of those things which you setup once and don't touch for long time but when you need to change it is hard to understand how it is working. There is one good thing about Dagger, application won't compile if configuration is invalid (code is generated on compile time).
 
- For Kotlin projects I prefer something which is friendly with Kotlin concepts and implemented with Kotlin. I know Kodein and Koin and my preference of choice is Koin due to simple reasons. Easy to setup, easy to understand (arguably :neutral_face:), lightweight and the way how it injects dependencies to the classes. However, comparing to Dagger it has one drawback - you would get run time exception if Koin setup is invalid. Which you won't if your setup is correct until that point when you explicitly run a code of exact place.
+ For Kotlin projects I prefer something which is friendly with Kotlin concepts and implemented with Kotlin. I know Kodein and Koin and my preference of choice is Koin due to simple reasons. Easy to setup, readable (arguably :neutral_face:), lightweight and simply can inject into *private val*. However, comparing to Dagger it has one drawback - you would get run time exception if Koin setup is invalid. Which means you won't know if your setup is correct until when you explicitly run a code in exact place.
 
 ### [Arrow](https://arrow-kt.io/)
 
-Functional Programming is big trend now. Even strictly OOP languages like Java (lambda function implementation) are getting influenced by FP. I am extremely interested into it.
+Functional Programming is a big trend now. Even strictly OOP languages like Java (lambda function implementation) are getting influenced by FP. I am extremely interested into it.
 
-At first, I didn't plan to use it but I came to the point when I couldn't figure out what is best way to deal with multiple data types which represents the state (like view state loading, error, empy etc.). I had few options here:
+At first, I didn't plan to use it but I came to the point when I couldn't figure out what is the best way to deal with multiple data types which represents the state (like view state loading, error, empy etc.). I had few options here:
  
- This one looks fairly simple and should server for all possible execution states. It compiles fine but it is quite obvious there will be some problem. The thing is, on run time you cannot know the type of *T* because it is deleted on compile time. You would need to cast! :fearful:
+ This one looks fairly simple and should serve for all possible execution states. It compiles fine but it is quite obvious that there will be some problems. The thing is, on run time you cannot know the type of *T* because it is deleted on compile time. You would need to cast! :fearful:
 
     sealed class State<out T : Any> {
 	    object Loading : State<Nothing>()
