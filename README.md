@@ -10,6 +10,11 @@
 
 High-order functions, Sequences, data types you name it. All those language features helps to maintain and scale applications much easier then before. Also and most important thing, Kotlin is first-class language for Android by Google.
 
+### [ktlint](https://ktlint.github.io/)
+Because nobody wants to read  random :hankey: code style. Ktlint is lightweight static code analysis tool. To some extent it obeys official [Android Kotlin style guide](https://developer.android.com/kotlin/style-guide). It necessarily means that you have to blindly follow it. If there is something you don't like or you want customise, you can easily do it.
+
+[Detekt](https://arturbosch.github.io/detekt/) is another great tool but it's main purpose is not for code style. You can plug in Ktlin but I didn't want to over-engineer the application. 
+
 ### [Architecture Components]([https://developer.android.com/topic/libraries/architecture/](https://developer.android.com/topic/libraries/architecture/))
 
 Then it comes question what you should choose when you design application architecture, I think it doesn't really much matter. MVP, MVVM, MVI or any other pattern, they all are very similar and they all do the same thing - separate application concerns.
