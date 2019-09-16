@@ -15,7 +15,7 @@ Because nobody wants to read  random :hankey: code style. Ktlint is lightweight 
 
 [Detekt](https://arturbosch.github.io/detekt/) is another great tool but it's main purpose is not for code style. You can plug in Ktlin but I didn't want to over-engineer the application. 
 
-### [Architecture Components]([https://developer.android.com/topic/libraries/architecture/](https://developer.android.com/topic/libraries/architecture/))
+### [Architecture Components](https://developer.android.com/topic/libraries/architecture/)
 
 Then it comes question what you should choose when you design application architecture, I think it doesn't really much matter. MVP, MVVM, MVI or any other pattern, they all are very similar and they all do the same thing - separate application concerns.
 
