@@ -1,8 +1,8 @@
-﻿ # Cars 
+ # Cars 
  [![Build Status](https://travis-ci.org/rsetkus/cars-map.svg?branch=master)](https://travis-ci.org/rsetkus/cars-map)
  
  ## Downloads
- Download app here
+ Download app from [here](https://github.com/rsetkus/cars-map/blob/master/downloads/app-debug.apk)
  ## Design & Dependencies
  ### [Kotlin](https://kotlinlang.org/)
  I :heart: Kotlin. Java is great too but due to certain reasons it has limitations. Let me put it this way, when I am writing Kotlin code most of the time I don't need to think **"how"**, I just need to know **"what"** I have to code.
