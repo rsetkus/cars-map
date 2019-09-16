@@ -11,7 +11,7 @@
 High-order functions, Sequences, data types you name it. All those language features helps to maintain and scale applications much easier then before. Also and most important thing, Kotlin is first-class language for Android by Google.
 
 ### [ktlint](https://ktlint.github.io/)
-Because nobody wants to read  random :hankey: code style. In industry like this we have to have widely agreed standards. I take coding style very seriously because I want write code which everybody would feel comfortable and I expect the same from the others. Ktlint is lightweight static code analysis tool. To some extent it obeys official [Android Kotlin style guide](https://developer.android.com/kotlin/style-guide). It necessarily means that you have blindly follow it. If there is something you don't like or you want customise, you can easily do it.
+Because nobody wants to read  random :hankey: code style. In industry like this we have to have widely agreed standards. I take coding style very seriously because I seek to write code where everybody would feel comfortable reading it and I expect the same from the others. Ktlint is lightweight static code analysis tool. To some extent it obeys official [Android Kotlin style guide](https://developer.android.com/kotlin/style-guide). It necessarily means that you have blindly follow it. If there is something you don't like or you want customise, you can easily do it.
 
 [Detekt](https://arturbosch.github.io/detekt/) is another great tool but it's main purpose is not for code style. You can plug in Ktlin but I didn't want to over-engineer the application. 
 
